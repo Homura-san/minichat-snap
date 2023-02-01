@@ -1,0 +1,78 @@
+<%- include('partials/header')%>
+<body>
+    <%- include('partials/navbar')%>
+    <br>
+    <div class="container">
+        <div class="history">
+            
+            <% chats.forEach(chat => { %>
+
+                <% if(chat.userId == idSession){ %>
+                    <div class="msgRem">
+                        <div class="hidden">
+                        <%= chat.id %>
+                        </div>
+                        <div class="user">
+                            <%= chat.name %> 
+                            <form action="/chat/delete" method="POST" style="display: inline-flex;">
+                                <input class="hidden" name="id" value="<%= chat.id %>">
+                                <button type="submit" class="erase">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="del">
+                            
+                        </div>
+                        <div class="conteudo">
+                        <%= chat.content %>
+                        </div>
+    
+                        <div class="time">
+                            <%= chat.date %>
+                        </div>
+                    </div>
+                <% }else{ %>
+                    <div class="msgRec">
+                        <div class="hidden">
+                        <%= chat.id %>
+                        </div>
+                        <div class="user" id="txtRec">
+                            <%= chat.name %> 
+                            <!-- <form action="/chat/delete" method="POST" style="display: inline-flex;">
+                                <input class="hidden" name="id" value="<%= chat.id %>">
+                                <button type="submit" class="erase">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </form> -->
+                        </div>
+                        <div class="del">
+                            
+                        </div>
+                        <div class="conteudo">
+                        <%= chat.content %>
+                        </div>
+    
+                        <div class="time" id="txtRec">
+                            <%= chat.date %>
+                        </div>
+                    </div>
+                <% } %>
+            <% }) %>
+        </div>
+        
+        <div class="input">
+            <form action="/chat/send" method="POST" class="message" style="display: inline-flex;">
+            <div class="input-group">
+                
+                <input type="text" placeholder="Escreva sua mensagem aqui..." style="margin-right: 5%;" class="form-control" name="content" required>
+                <button type="submit" class="btn btn-outline-primary" id="send">Enviar</button>
+            </div>
+            </form>
+        </div>
+        
+    </div>
+    
+    
+</body>
+<%- include('partials/footer')%>
