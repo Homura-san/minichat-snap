@@ -1,0 +1,6 @@
+# Minichat-snap
+
+ Esse é um projeto back-end que simula um site de bate papo.
+O minichat snap foi elaborado a partir de um outro projeto meu, o
+fast-message, mas o anterior usava um formato de código ineficiente e 
+continha muitas limitações.
