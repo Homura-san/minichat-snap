@@ -13,24 +13,57 @@
     </nav>
 
     <div class="container">
-        <div class="card">
+        <div class="card" id="usernameChange">
             <div class="card-header">
-                <h2>Edição de Usuário</h2>
+                <h2>Editar nome de Usuário</h2>
             </div>
             <div class="card-body">
                 <form action="/user/update" method="POST">
                     <input type="hidden" name="id" value="<%= user.id %>">
                     <input type="text" class="form-control" name="name" placeholder="Insira seu nome" value="<%= user.name %>">
                     <br>
+                    
+                    <!-- <input type="password" class="form-control" name="password" placeholder="Insira sua senha"> -->
+                    
+                    <button class="btn btn-primary">Confirmar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card" id="emailChange">
+            <div class="card-header">
+                <h2>Modificar email</h2>
+            </div>
+            <div class="card-body">
+                <form action="">
+                    <input type="hidden" name="id" value="<%= user.id %>">
                     <input type="text" class="form-control" name="email" placeholder="Insira seu email" value="<%= user.email %>">
                     <br>
-                    <!-- <input type="password" class="form-control" name="password" placeholder="Insira sua senha"> -->
+                    <input type="password" class="form-control" name="password" placeholder="Confirme sua senha">
+                    <br>
+                    <button class="btn btn-primary">Confirmar</button>
+                </form>
+                
+            </div>
+        </div>
+
+        <div class="card" id="passChange">
+            <div class="card-header">
+                <h2>Mudar senha de usuário</h2>
+            </div>
+            <div class="card-body">
+                <form action="">
+                    <input type="hidden" name="id" value="<%= user.id %>">
+                    <input type="password" class="form-control" name="oldpass" placeholder="Digite sua senha antiga">
+                    <br>
+                    <input type="password" class="form-control" name="newpass1" placeholder="Digite sua nova senha">
+                    <br>
+                    <input type="password" class="form-control" name="password" placeholder="Confirme sua nova senha">
                     <br>
                     <button class="btn btn-primary">Confirmar</button>
                 </form>
             </div>
         </div>
+
     </div>
 </body>
-
-<h3>álspdk</h3>
