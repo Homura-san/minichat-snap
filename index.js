@@ -42,7 +42,7 @@ app.get('/', loginAuth , (req, res) => {
     var idSession = req.session.user.id;
     Chat.findAll({
         order:[
-            ['id', 'ASC']
+            ['id', 'DESC']
         ]
     }).then(chats => {
         res.render("index", {chats: chats, idSession: idSession})

@@ -2,14 +2,35 @@ body{
   background: rgb(31, 34, 36);
   justify-content: center;
 }
-.history{
+/* .history{
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 530px;
-    overflow-y: scroll;
+    overflow: scroll;
     scroll-behavior: smooth;
-  }
+  } */
+
+#scroll{
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  height: 530px;
+  overflow: auto;
+}
+
+::-webkit-scrollbar{
+  background-color: #1d1d1d;
+  width: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: #5b5b5b;
+  border-radius: 8px;
+}
+
 .user{
   font-size: 14px;
   margin: 0 0 2px 0;
