@@ -31,7 +31,7 @@
                     <h2>Editar nome de Usuário</h2>
                 </div>
                 <div class="card-body">
-                    <form action="/user/update" method="POST">
+                    <form action="/user/updateName" method="PUT">
                         <input type="hidden" name="id" value="<%= user.id %>">
                         <input type="text" class="form-control" name="name" placeholder="Insira seu nome" value="<%= user.name %>">
                         <br>
@@ -51,11 +51,11 @@
                     <h2>Modificar email</h2>
                 </div>
                 <div class="card-body">
-                    <form action="">
+                    <form action="/user/updateEmail" method="PUT">
                         <input type="hidden" name="id" value="<%= user.id %>">
                         <input type="text" class="form-control" name="email" placeholder="Insira seu email" value="<%= user.email %>">
                         <br>
-                        <input type="password" class="form-control" name="password" placeholder="Confirme sua senha">
+                        <input type="password" class="form-control" name="confPass" placeholder="Confirme sua senha (caso a operação falhe, voltará a essa tela)">
                         <br>
                         <button class="btn btn-primary">Confirmar</button>
                     </form>
@@ -70,13 +70,13 @@
                     <h2>Trocar senha de usuário</h2>
                 </div>
                 <div class="card-body">
-                    <form action="">
+                    <form action="/user/updatePass" method="PUT">
                         <input type="hidden" name="id" value="<%= user.id %>">
-                        <input type="password" class="form-control" name="oldpass" placeholder="Digite sua senha antiga">
+                        <input type="password" class="form-control" name="confPass" placeholder="Digite sua senha antiga">
                         <br>
-                        <input type="password" class="form-control" name="newpass1" placeholder="Digite sua nova senha">
+                        <input type="password" class="form-control" name="newPass" placeholder="Digite sua nova senha (caso a operação falhe, voltará a essa tela)">
                         <br>
-                        <input type="password" class="form-control" name="password" placeholder="Confirme sua nova senha">
+                        <input type="password" class="form-control" name="passControl" placeholder="Confirme sua nova senha">
                         <br>
                         <button class="btn btn-primary">Confirmar</button>
                     </form>
