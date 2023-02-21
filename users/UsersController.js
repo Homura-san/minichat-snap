@@ -4,6 +4,15 @@ const User = require('./User');
 const bcrypt = require('bcryptjs');
 const loginAuth = require('../middlewares/loginAuth')
 
+
+class UpdateUser{
+    static async userUpdate(userfield, userid){
+        User.update({...userfield}, {
+            where: {id: userid}
+        })
+    }
+}
+
 router.get('/cadastro', (req, res) => {
     res.render('admin/cadastro')
 });
@@ -52,17 +61,78 @@ router.get('/user/edit/:id', loginAuth, (req, res) => {
     })
 })
 
-router.post('/user/update', loginAuth, (req, res) => {
+router.post('/user/update/:type', loginAuth, (req, res) => {
+    var type = req.params.type;
     var id = req.body.id;
+
     var name = req.body.name;
-    var email = req.body.email;
+    var newemail = req.body.email;
+
+    var confPass = req.body.confPass
+    var newPass = req.body.newPass;
+    var passControl = req.body.passControl;
+    
     // var password = req.body.password;
 
-    User.update({name: name, email: email}, {
-        where: {id: id}
-    }).then(() => {
-        res.redirect('/')
-    }).catch(err => {res.redirect('/users/edit')})
+    if(type == 'updateName'){
+        try {
+            UpdateUser.userUpdate({name: name}, id);
+            res.redirect('/');
+        } catch (error) {
+            res.redirect(`/user/edit/${id}`);
+        }
+    };
+
+    if(type == 'updateEmail'){
+        User.findOne({where: {email: newemail}}).then(email => {
+            
+            
+            if (email == undefined){
+                User.findOne({where: {id: id}}).then(user => {
+                    var correct = bcrypt.compareSync(confPass, user.password)
+        
+                    if(correct){
+                        try {
+                            UpdateUser.userUpdate({email: newemail}, id)
+                            res.redirect('/')
+                        } catch (error) {
+                            res.redirect(`/user/edit/${id}`)
+                        };
+                    }else{
+                        res.redirect(`/user/edit/${id}`)
+                    };
+                });
+            }else{res.redirect(`/user/edit/${id}`)};
+        });
+        
+        
+    };
+
+    if(type == 'updatePass'){
+        
+
+        if(newPass == passControl){
+            User.findOne({where: {id: id}}).then(user => {
+                var correct = bcrypt.compareSync(confPass, user.password)
+                
+                var salt = bcrypt.genSaltSync(10);
+                var hash = bcrypt.hashSync(newPass, salt);
+
+                if(correct){
+                    try {
+                        UpdateUser.userUpdate({password: hash}, id)
+                        res.redirect('/')
+                    } catch (error) {
+                        res.redirect(`/user/edit/${id}`)
+                    }
+                }else{
+                    res.redirect(`/user/edit/${id}`)
+                }
+            })
+        }else{res.redirect(`/user/edit/${id}`)};
+    };
+    
+    
 });
 
 router.get('/login', (req, res) => {
