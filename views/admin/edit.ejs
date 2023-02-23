@@ -1,4 +1,4 @@
-<%- include('../partials/editheader')%>
+<%- include('../partials/header')%>
 
 <body>
     <nav class="navbar navbar-dark bg-primary">
@@ -14,16 +14,26 @@
     </nav>
 
     <div class="container">
-
         
+        <br>
 
+        <div class="mt-4 p-5 bg-primary text-white rounded">
+            <h1 class="display-4">Bem-vindo a página de personalização de sua conta!</h1>
+            <p class="lead">Aqui, você pode editar informações como email, nome de usuário e senha</p>
+            <hr class="my-4">
+            <p>
+                Se a alteração for bem-sucedida, você será redirecionado para a página inicial.
+                Caso contrário, irá retornar para essa mesma tela. 
+            </p>
+            <p>
+                <button data-bs-toggle="collapse" data-bs-target="#userc" class="btn btn-secondary">Editar nome de usuário</button>
+                <button data-bs-toggle="collapse" data-bs-target="#usere" class="btn btn-secondary">Editar email</button>
+                <button data-bs-toggle="collapse" data-bs-target="#userp" class="btn btn-secondary">Trocar senha</button>
+            </p>
+          </div>
 
         <br>
-        <p>
-            <button data-bs-toggle="collapse" data-bs-target="#userc" class="btn btn-success">Editar nome de usuário</button>
-            <button data-bs-toggle="collapse" data-bs-target="#usere" class="btn btn-secondary">Editar email</button>
-            <button data-bs-toggle="collapse" data-bs-target="#userp" class="btn btn-info">Trocar senha</button>
-        </p>
+        
         
         <div class="collapse" id="userc">
             <div class="card" id="usernameChange">
