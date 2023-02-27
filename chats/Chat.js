@@ -18,6 +18,6 @@ const Chat = connection.define('chats', {
 User.hasMany(Chat);
 Chat.belongsTo(User);
 
-//Chat.sync({force: false}).then(() => {});
+// Chat.sync({force: false}).then(() => {});
 
 module.exports = Chat;

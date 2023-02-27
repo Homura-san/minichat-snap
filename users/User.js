@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const connection = require('../database/database');
 
 
+
 const User = connection.define('users', {
     email:{
         type: Sequelize.STRING,
@@ -15,9 +16,7 @@ const User = connection.define('users', {
     }
 })
 
-//User.hasMany(Chat);
-//Chat.belongsTo(User);
 
-User.sync({force: false}).then(() => {});
+//User.sync({force: false}).then(() => {});
 
 module.exports = User;

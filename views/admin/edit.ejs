@@ -41,13 +41,11 @@
                     <h2>Editar nome de Usuário</h2>
                 </div>
                 <div class="card-body">
-                    <form action="/user/updateName" method="PUT">
+                    <form action="/user/name" method="POST">
                         <input type="hidden" name="id" value="<%= user.id %>">
                         <input type="text" class="form-control" name="name" placeholder="Insira seu nome" value="<%= user.name %>">
                         <br>
-                        
-                        <!-- <input type="password" class="form-control" name="password" placeholder="Insira sua senha"> -->
-                        
+
                         <button class="btn btn-primary">Confirmar</button>
                     </form>
                 </div>
@@ -61,7 +59,7 @@
                     <h2>Modificar email</h2>
                 </div>
                 <div class="card-body">
-                    <form action="/user/updateEmail" method="PUT">
+                    <form action="/user/email" method="POST">
                         <input type="hidden" name="id" value="<%= user.id %>">
                         <input type="text" class="form-control" name="email" placeholder="Insira seu email" value="<%= user.email %>">
                         <br>
@@ -80,7 +78,7 @@
                     <h2>Trocar senha de usuário</h2>
                 </div>
                 <div class="card-body">
-                    <form action="/user/updatePass" method="PUT">
+                    <form action="/user/password" method="POST">
                         <input type="hidden" name="id" value="<%= user.id %>">
                         <input type="password" class="form-control" name="confPass" placeholder="Digite sua senha antiga">
                         <br>
